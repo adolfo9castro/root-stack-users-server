@@ -6,13 +6,22 @@ const {
   DB_PASSWORD,
   DB_ENDPOINT,
   DB_DIALECT,
-  DB_PORT } = process.env
+  DB_PORT,
+  DB_CERTIFICATE } = process.env
+
+  const caCert = Buffer.from(DB_CERTIFICATE, 'base64').toString();
 
 /** Constante con la instancia de Sequelize asociada a la base de datos */
 const sequelize = new Sequelize(DB_SCHEMA, DB_USER, DB_PASSWORD, {
   host: DB_ENDPOINT,
   dialect: DB_DIALECT,
-  port: DB_PORT  
+  port: DB_PORT,
+  ssl: true
+  /* dialectOptions: {
+    ssl: {
+      ca: caCert,
+    },
+  }, */
 });
 
 const Model = require('./model')(sequelize, Sequelize)
