@@ -28,7 +28,7 @@ const corsAllowed = {
   "credentials": true,
   "origin": [
     "*",
-    "http://localhost:4200",
+    "https://adolfo9castro.github.io/root-stack-users",
   ],
   "allowedHeaders": [
     "Origin",
