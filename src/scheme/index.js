@@ -13,7 +13,9 @@ const sequelize = new Sequelize(DB_SCHEMA, DB_USER, DB_PASSWORD, {
   host: DB_ENDPOINT,
   dialect: DB_DIALECT,
   port: DB_PORT,
-  ssl: true
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 const Model = require('./model')(sequelize, Sequelize)
